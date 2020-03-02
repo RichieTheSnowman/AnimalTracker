@@ -27,6 +27,9 @@ public class MouseTracker implements PixelFilter {
             outputCSVData(dataset);         // output data to csv file, if you wish
         }
 
+        short[][] pixels = img.getBWPixelGrid();
+        short[][] newImage = new short[pixels.length][pixels[0].length];
+
         return img;
     }
 

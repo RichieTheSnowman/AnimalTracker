@@ -1,7 +1,10 @@
 import processing.core.PApplet;
 
+import java.util.ArrayList;
+
 public class ThesholdFilter implements PixelFilter, Clickable {
-    private int threshold = 127;
+    private int threshold = 50;
+    ArrayList<Point> points;
 
     @Override
     public DImage processImage(DImage img) {
@@ -11,15 +14,21 @@ public class ThesholdFilter implements PixelFilter, Clickable {
             for (int c = 0; c < pixels[r].length; c++) {
                 if (pixels[r][c] > threshold) {
                     pixels[r][c] = 255;
+                    //points.add(new Point(r, c));
                 } else {
                     pixels[r][c] = 0;
                 }
             }
         }
 
+
+
         img.setPixels(pixels);
         return img;
     }
+
+
+
 
     @Override
     public void drawOverlay(PApplet window, DImage original, DImage filtered) {

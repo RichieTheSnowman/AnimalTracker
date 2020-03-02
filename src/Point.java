@@ -1,5 +1,13 @@
 public class Point {
-    private int row, col;
+    private int row, col, center;
+
+    public int getCenter() {
+        return center;
+    }
+
+    public void setCenter(int row, int col) {
+        this.center = center;
+    }
 
     public Point(int row, int col) {
         this.row = row;
