@@ -1,9 +1,12 @@
 import processing.core.PApplet;
 
+import java.util.ArrayList;
+
 public class FindMouse implements PixelFilter{
-    RemoveCircle r;
-    ThesholdFilter t;
+    private RemoveCircle r;
+    private ThesholdFilter t;
     Point p;
+    ArrayList<Point> points = new ArrayList<>();
 
 
     public FindMouse(){
@@ -39,8 +42,8 @@ public class FindMouse implements PixelFilter{
                 }
             }
         }
-
         Point p = new Point(avgy/count, avgx/count);
+        points.add(p);
         return p;
 
     }
@@ -49,6 +52,11 @@ public class FindMouse implements PixelFilter{
     public void drawOverlay(PApplet window, DImage original, DImage filtered) {
         window.fill(0, 255, 0);
             window.ellipse(p.getCol(), p.getRow(), 10, 10);
+
+        window.fill(0,0, 255);
+        for (int i = 0; i < points.size(); i++) {
+            window.point(points.get(i).getCol(), points.get(i).getRow());
+        }
 
     }
 }
