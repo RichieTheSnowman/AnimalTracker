@@ -8,7 +8,7 @@ public class DataSet {
     private int FPS;
     ArrayList<Point> centers = new ArrayList<>();
     ROI region;
-    //ArrayList<Point> data = new ArrayList<>();
+
 
     public ArrayList<Point> getCenters() {
         return centers;
@@ -23,9 +23,8 @@ public class DataSet {
         this.pixelsPerCm = pixelsPerCm;
         this.FPS = FPS;
     }
-    public DataSet(String filename, final int FPS){
+    public DataSet(String filename){
         readFileAsPoints(filename);
-        this.FPS = FPS;
     }
     public double distBtwPoints(Point p1, Point p2){
         double dx = p1.getRow()-p2.getRow();
@@ -141,7 +140,6 @@ public class DataSet {
     }
 
     public void readFileAsPoints(String filepath){
-        //StringBuilder output = new StringBuilder();
         try (Scanner scanner = new Scanner(new File(filepath))){
             while (scanner.hasNext()){
                 String line = scanner.nextLine();
